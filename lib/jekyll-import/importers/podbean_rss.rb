@@ -43,8 +43,8 @@ module JekyllImport
         STDOUT.write "Channel #{rss.channel}"
         title = rss.channel.title
         description = rss.channel.title
-        category = rss.channel['itunes:category']
-        subtitle = rss.channel.itunes_subtitle
+        category = rss.channel.xpath('itunes:category')
+        subtitle = rss.channel.xpath('itunes:subtitle')
         image = rss.channel.image.url
         image_width = rss.channel.image.width
         image_height = rss.channel.image.height
@@ -66,7 +66,7 @@ module JekyllImport
             'url'   => item.enclosure['url'],
             'length'    => {
                 'seconds'   => item.enclosure['length'],
-                'string'    => item.itunes_duration,
+                'string'    => item.xpath('itunes:duration'),
             },
             'type'  => item.enclosure['type'],
             'image'     => {
