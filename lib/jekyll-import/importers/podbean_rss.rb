@@ -38,7 +38,7 @@ module JekyllImport
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
 
         # Channel Data
-        STDOUT.write "Channel #{channel}"
+        STDOUT.write "Channel #{rss.channel}"
         title = rss.channel.title
         description = rss.channel.title
         category = rss.channel['itunes:category']
