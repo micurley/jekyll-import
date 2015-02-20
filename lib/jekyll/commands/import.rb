@@ -22,7 +22,7 @@ module Jekyll
         :mt => 'MT',
         :posterous => 'Posterous',
         :rss => 'RSS',
-        :podbeanrss => 'PODBean RSS',
+        :podbean_rss => 'PodBeanRSS',
         :s9y => 'S9Y',
         :textpattern => 'TextPattern',
         :tumblr => 'Tumblr',

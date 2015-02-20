@@ -1,6 +1,6 @@
 module JekyllImport
   module Importers
-    class RSS < Importer
+    class PodBeanRSS < Importer
       def self.specify_options(c)
         c.option 'source', '--source NAME', 'The RSS file or URL to import'
       end
