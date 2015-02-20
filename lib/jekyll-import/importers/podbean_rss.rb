@@ -29,6 +29,8 @@ module JekyllImport
       def self.process(options)
         source = options.fetch('source')
 
+        STDOUT.write "Processing #{source}"
+
         content = ""
         open(source) { |s| content = s.read }
         rss = ::RSS::Parser.parse(content, false)
