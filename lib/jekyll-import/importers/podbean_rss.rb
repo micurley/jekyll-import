@@ -82,6 +82,8 @@ module JekyllImport
 
           FileUtils.mkdir_p("_posts")
 
+          STDOUT.write 'Hello, World!'
+
           File.open("_posts/#{name}.html", "w") do |f|
             f.puts header.to_yaml
             f.puts "---\n\n"
