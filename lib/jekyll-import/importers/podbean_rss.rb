@@ -58,26 +58,26 @@ module JekyllImport
           }
 
           podcast = {
-            'url' => item.enclosure['url'],
-            'length' => {
-                'seconds' => item.enclosure['length'],
-                'string' => item.itunes_duration,
+            'url'   => item.enclosure['url'],
+            'length'    => {
+                'seconds'   => item.enclosure['length'],
+                'string'    => item.itunes_duration,
             },
-            'type' => item.enclosure['type'],
-            'image' = {
-                'url' => item.media_content['url'],
-                'type' => item.media_content['medium'],
+            'type'  => item.enclosure['type'],
+            'image'     => {
+                'url'   => item.media_content['url'],
+                'type'  => item.media_content['medium'],
             }
           }
 
           header = {
-            'layout' => 'post',
-            'title' => item.title,
-            'description' => description,
-            'subtitle' => subtitle,
-            'category' => [category, title],
-            'image' => image,
-            'podcast' => podcast,
+            'layout'        => 'post',
+            'title'         => item.title,
+            'description'   => description,
+            'subtitle'      => subtitle,
+            'category'      => [category, title],
+            'image'         => image,
+            'podcast'       => podcast,
           }
 
           FileUtils.mkdir_p("_posts")
