@@ -40,7 +40,7 @@ module JekyllImport
         # Channel Data
         title = rss.channel.title
         description = rss.channel.title
-        category = rss.channel.itunes_category
+        category = rss.channel['itunes:category']
         subtitle = rss.channel.itunes_subtitle
         image = rss.channel.image.url
         image_width = rss.channel.image.width
