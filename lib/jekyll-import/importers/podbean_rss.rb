@@ -36,6 +36,8 @@ module JekyllImport
         content = ""
         open(source) { |s| content = s.read }
         content = content.gsub! '<media:content', '<image'
+        STDOUT.write "Content #{content}\n"
+
         rss = ::RSS::Parser.parse(content, false)
 
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
