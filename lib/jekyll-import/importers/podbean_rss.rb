@@ -71,15 +71,15 @@ module JekyllImport
           }
 
           podcast = {
-            'url'   => item.enclosure('@url'),
+            'url'   => item.enclosure,
             'length'    => {
-                'seconds'   => item.enclosure.attribute('length'),
+                'seconds'   => item.enclosure,
                 'string'    => item.itunes_duration,
             },
-            'type'  => item.enclosure.attribute('type'),
+            'type'  => item.enclosure,
             'image'     => {
-                'url'   => item.media_content.attribute('url'),
-                'type'  => item.media_content.attribute('medium'),
+                'url'   => item.media_content,
+                'type'  => item.media_content,
             }
           }
 
