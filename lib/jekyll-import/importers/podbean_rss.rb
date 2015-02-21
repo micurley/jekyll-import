@@ -49,7 +49,7 @@ module JekyllImport
         description = rss.channel.description
         STDOUT.write "Description: #{description}\n"
 
-        category = rss.channel.category
+        category = rss.channel.category.text
         STDOUT.write "Category: #{category}\n"
 
         image = rss.channel.image.url
@@ -57,18 +57,18 @@ module JekyllImport
         image_height = rss.channel.image.height
         STDOUT.write "Image: #{image}[#{image_width}x#{image_height}]\n"
 
+        image = {
+          'url' => image,
+          'width' => image_width,
+          'height' => image_height,
+        }
+
         rss.items.each do |item|
           formatted_date = item.date.strftime('%Y-%m-%d')
           post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
             i.downcase if i != ''
           end.compact.join('-')
           name = "#{formatted_date}-#{post_name}"
-
-          image = {
-            'url' => image,
-            'width' => image_width,
-            'height' => image_height,
-          }
 
           podcast = {
             'url'   => item.enclosure.url,
@@ -78,8 +78,8 @@ module JekyllImport
             },
             'type'  => item.enclosure,
             'image'     => {
-                'url'   => item.media_content.url,
-                'type'  => item.media_content.medium,
+#                'url'   => item.media_content.url,
+#                'type'  => item.media_content.medium,
             }
           }
 
