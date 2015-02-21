@@ -43,18 +43,18 @@ module JekyllImport
         title = rss.channel.title
         STDOUT.write "Title #{title}\n"
 
-        subtitle = rss.channel.itunes_subtitle.text
+        subtitle = rss.channel.itunes_subtitle
         STDOUT.write "Subtitle #{subtitle}\n"
 
         description = rss.channel.description
         STDOUT.write "Description #{description}\n"
 
-        category = rss.channel.itunes_category.text
+        category = rss.channel.itunes_category
         STDOUT.write "Category #{category}\n"
 
-        image = rss.channel.image.url.text
-        image_width = rss.channel.image.width.text
-        image_height = rss.channel.image.height.text
+        image = rss.channel.image.url
+        image_width = rss.channel.image.width
+        image_height = rss.channel.image.height
         STDOUT.write "Image #{image}[#{image_width}x#{image_height}]\n"
 
         rss.items.each do |item|
