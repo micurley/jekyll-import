@@ -74,7 +74,7 @@ module JekyllImport
           #post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
           #  i.downcase if i != ''
           #end.compact.join('-')
-          post_name = item.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]+/, '')
+          post_name = item.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]+/, '-').gsub(/-+/, '-')
           name = "#{formatted_date}-#{post_name}"
 
           podcast = {
