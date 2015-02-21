@@ -40,10 +40,12 @@ module JekyllImport
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
 
         # Channel Data
-        STDOUT.write "Channel #{rss.channel}"
         title = rss.channel.title
         description = rss.channel.title
         category = rss.channel.itunes_category
+
+        STDOUT.write "Category #{category}"
+
         subtitle = rss.channel.itunes_subtitle
         image = rss.channel.image.url
         image_width = rss.channel.image.width
@@ -63,15 +65,15 @@ module JekyllImport
           }
 
           podcast = {
-            'url'   => item.enclosure['url'],
+            'url'   => item.enclosure.attribute('url'),
             'length'    => {
-                'seconds'   => item.enclosure['length'],
+                'seconds'   => item.enclosure.attribute('length'),
                 'string'    => item.itunes_duration,
             },
-            'type'  => item.enclosure['type'],
+            'type'  => item.enclosure.attribute('type'),
             'image'     => {
-                'url'   => item.media_content['url'],
-                'type'  => item.media_content['medium'],
+                'url'   => item.media_content.attribute('url'),
+                'type'  => item.media_content.attribute('medium'),
             }
           }
 
