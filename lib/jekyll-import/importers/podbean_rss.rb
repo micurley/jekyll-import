@@ -38,9 +38,8 @@ module JekyllImport
         content = content.gsub! '<media:content', '<image'
         content = content.gsub! '</media:content>', '</image>'
 
-        STDOUT.write "Content #{content}\n"
-
         rss = ::RSS::Parser.parse(content, false)
+        STDOUT.write "Content #{rss.root}\n"
 
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
 
@@ -84,8 +83,8 @@ module JekyllImport
             },
             'type'  => item.enclosure,
             'image'     => {
-                'url'   => item.image.url,
-                'type'  => item.image.medium,
+#                'url'   => item.image.url,
+#                'type'  => item.image.medium,
             }
           }
 
