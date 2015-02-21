@@ -31,7 +31,7 @@ module JekyllImport
       def self.process(options)
         source = options.fetch('source')
 
-        STDOUT.write "Processing #{source}"
+        STDOUT.write "Processing #{source}\n"
 
         content = ""
         open(source) { |s| content = s.read }
@@ -41,16 +41,21 @@ module JekyllImport
 
         # Channel Data
         title = rss.channel.title
-        description = rss.channel.title
+        STDOUT.write "Title #{title}\n"
+
+        subtitle = rss.channel.itunes_subtitle.text
+        STDOUT.write "Subtitle #{subtitle}\n"
+
+        description = rss.channel.description
+        STDOUT.write "Description #{description}\n"
 
         category = rss.channel.itunes_category.text
+        STDOUT.write "Category #{category}\n"
 
-        STDOUT.write "Category #{category}"
-
-        subtitle = rss.channel.itunes_subtitle
-        image = rss.channel.image.url
-        image_width = rss.channel.image.width
-        image_height = rss.channel.image.height
+        image = rss.channel.image.url.text
+        image_width = rss.channel.image.width.text
+        image_height = rss.channel.image.height.text
+        STDOUT.write "Image #{image}[#{image_width}x#{image_height}]\n"
 
         rss.items.each do |item|
           formatted_date = item.date.strftime('%Y-%m-%d')
@@ -66,7 +71,7 @@ module JekyllImport
           }
 
           podcast = {
-            'url'   => item.enclosure.attribute('url'),
+            'url'   => item.enclosure('@url'),
             'length'    => {
                 'seconds'   => item.enclosure.attribute('length'),
                 'string'    => item.itunes_duration,
