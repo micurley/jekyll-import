@@ -35,7 +35,7 @@ module JekyllImport
 
         content = ""
         open(source) { |s| content = s.read }
-        content.gsub! '<media:content', '<image'
+        content = content.gsub! '<media:content', '<image'
         rss = ::RSS::Parser.parse(content, false)
           STDOUT.write "Item: #{rss}\n\n\n"
 
