@@ -49,7 +49,7 @@ module JekyllImport
         description = rss.channel.description
         STDOUT.write "Description #{description}\n"
 
-        category = rss.channel.itunes_category
+        category = rss.channel.category.split(':')
         STDOUT.write "Category #{category}\n"
 
         image = rss.channel.image.url
@@ -78,8 +78,8 @@ module JekyllImport
             },
             'type'  => item.enclosure,
             'image'     => {
-                'url'   => item.media_content,
-                'type'  => item.media_content,
+#                'url'   => item.media_content,
+#                'type'  => item.media_content,
             }
           }
 
