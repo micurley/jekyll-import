@@ -80,7 +80,7 @@ module JekyllImport
                 'seconds'   => item.enclosure.length,
                 'string'    => item.itunes_duration.content,
             },
-            'type'  => item.enclosure,
+            'type'  => item.enclosure.type,
           }
 
             image = {
@@ -93,7 +93,7 @@ module JekyllImport
             'title'         => item.title,
             'description'   => description,
             'subtitle'      => subtitle,
-            'category'      => [category, title],
+            'category'      => [category.content, title],
             'show_image'    => show_image,
             'image'         => image,
             'podcast'       => podcast,
