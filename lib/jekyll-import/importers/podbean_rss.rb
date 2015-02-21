@@ -35,7 +35,7 @@ module JekyllImport
 
         content = ""
         open(source) { |s| content = s.read }
-        rss = ::RSS::Parser.parse(content, Nokogiri::XML::ParseOptions::NONET)
+        rss = ::RSS::Parser.parse(content)
           STDOUT.write "Item: #{rss}\n\n\n"
 
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
