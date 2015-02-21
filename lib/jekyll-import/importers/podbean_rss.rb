@@ -104,7 +104,7 @@ module JekyllImport
 
           FileUtils.mkdir_p("_posts/#{directory}")
 
-          File.open("_posts/#{name}.html", "w") do |f|
+          File.open("_posts/#{directory}/#{name}.html", "w") do |f|
             f.puts header.to_yaml
             f.puts "---\n\n"
             f.puts item.itunes_summary
