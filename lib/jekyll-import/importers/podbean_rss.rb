@@ -64,6 +64,8 @@ module JekyllImport
         }
 
         rss.items.each do |item|
+          STDOUT.write "Item: #{item}\n\n\n"
+
           formatted_date = item.date.strftime('%Y-%m-%d')
           post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
             i.downcase if i != ''
@@ -74,7 +76,7 @@ module JekyllImport
             'url'   => item.enclosure.url,
             'length'    => {
                 'seconds'   => item.enclosure.length,
-                'string'    => item.itunes_duration,
+                'string'    => item.itunes_duration.content,
             },
             'type'  => item.enclosure,
             'image'     => {
