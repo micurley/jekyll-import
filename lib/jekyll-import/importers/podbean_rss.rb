@@ -43,10 +43,7 @@ module JekyllImport
         title = rss.channel.title
         description = rss.channel.title
 
-        rss.channel.itunes_category.each do |cat|
-            STDOUT.write "Category #{category}"
-            category = cat.text
-        end
+        category = rss.channel.itunes_category.text
 
         STDOUT.write "Category #{category}"
 
