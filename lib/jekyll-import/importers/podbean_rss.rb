@@ -49,7 +49,7 @@ module JekyllImport
         description = rss.channel.description
         STDOUT.write "Description: #{description}\n"
 
-        category = rss.channel.category.text
+        category = rss.channel.category
         STDOUT.write "Category: #{category}\n"
 
         image = rss.channel.image.url
