@@ -61,7 +61,7 @@ module JekyllImport
         image_height = rss.channel.image.height
         STDOUT.write "Image: #{image}[#{image_width}x#{image_height}]\n"
 
-        image = {
+        show_image = {
           'url' => image,
           'width' => image_width,
           'height' => image_height,
@@ -82,11 +82,12 @@ module JekyllImport
                 'string'    => item.itunes_duration.content,
             },
             'type'  => item.enclosure,
-            'image'     => {
+          }
+
+            image = {
 #                'url'   => item.image.url,
 #                'type'  => item.image.medium,
             }
-          }
 
           header = {
             'layout'        => 'post',
@@ -94,6 +95,7 @@ module JekyllImport
             'description'   => description,
             'subtitle'      => subtitle,
             'category'      => [category, title],
+            'show_image'    => show_image,
             'image'         => image,
             'podcast'       => podcast,
           }
