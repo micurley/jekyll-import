@@ -35,6 +35,7 @@ module JekyllImport
 
         content = ""
         open(source) { |s| content = s.read }
+        content.gsub! '<media:content', '<image'
         rss = ::RSS::Parser.parse(content, false)
           STDOUT.write "Item: #{rss}\n\n\n"
 
@@ -65,7 +66,6 @@ module JekyllImport
         }
 
         rss.items.each do |item|
-
           formatted_date = item.date.strftime('%Y-%m-%d')
           post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
             i.downcase if i != ''
