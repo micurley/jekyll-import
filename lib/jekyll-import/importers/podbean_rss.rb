@@ -41,21 +41,21 @@ module JekyllImport
 
         # Channel Data
         title = rss.channel.title
-        STDOUT.write "Title #{title}\n"
+        STDOUT.write "Title: #{title}\n"
 
         subtitle = rss.channel.itunes_subtitle
-        STDOUT.write "Subtitle #{subtitle}\n"
+        STDOUT.write "Subtitle: #{subtitle}\n"
 
         description = rss.channel.description
-        STDOUT.write "Description #{description}\n"
+        STDOUT.write "Description: #{description}\n"
 
-        category = rss.channel.category.split(':')
-        STDOUT.write "Category #{category}\n"
+        category = rss.channel.category
+        STDOUT.write "Category: #{category}\n"
 
         image = rss.channel.image.url
         image_width = rss.channel.image.width
         image_height = rss.channel.image.height
-        STDOUT.write "Image #{image}[#{image_width}x#{image_height}]\n"
+        STDOUT.write "Image: #{image}[#{image_width}x#{image_height}]\n"
 
         rss.items.each do |item|
           formatted_date = item.date.strftime('%Y-%m-%d')
@@ -94,8 +94,6 @@ module JekyllImport
           }
 
           FileUtils.mkdir_p("_posts")
-
-          STDOUT.write 'Hello, World!'
 
           File.open("_posts/#{name}.html", "w") do |f|
             f.puts header.to_yaml
