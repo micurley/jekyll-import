@@ -82,8 +82,8 @@ module JekyllImport
             },
             'type'  => item.enclosure,
             'image'     => {
-#                'url'   => item.media_content.url,
-#                'type'  => item.media_content.medium,
+                'url'   => item.image.url,
+                'type'  => item.image.medium,
             }
           }
 
