@@ -37,7 +37,6 @@ module JekyllImport
         open(source) { |s| content = s.read }
         content = content.gsub! '<media:content', '<image'
         rss = ::RSS::Parser.parse(content, false)
-          STDOUT.write "Item: #{rss}\n\n\n"
 
         raise "There doesn't appear to be any RSS items at the source (#{source}) provided." unless rss
 
@@ -66,6 +65,7 @@ module JekyllImport
         }
 
         rss.items.each do |item|
+          STDOUT.write "Item: #{item}\n\n\n"
           formatted_date = item.date.strftime('%Y-%m-%d')
           post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
             i.downcase if i != ''
