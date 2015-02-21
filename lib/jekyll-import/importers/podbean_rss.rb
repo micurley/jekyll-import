@@ -44,6 +44,8 @@ module JekyllImport
 
         # Channel Data
         title = rss.channel.title
+        directory = title.downcase.gsub(/[^\w-]+/, '-')
+
         STDOUT.write "Title: #{title}\n"
 
         subtitle = rss.channel.itunes_subtitle
@@ -69,9 +71,10 @@ module JekyllImport
         rss.items.each do |item|
           STDOUT.write "Item: #{item}\n\n\n"
           formatted_date = item.date.strftime('%Y-%m-%d')
-          post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
-            i.downcase if i != ''
-          end.compact.join('-')
+          #post_name = item.title.split(%r{ |!|/|:|&|-|$|,}).map do |i|
+          #  i.downcase if i != ''
+          #end.compact.join('-')
+          post_name = item.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]+/, '')
           name = "#{formatted_date}-#{post_name}"
 
           podcast = {
@@ -99,7 +102,7 @@ module JekyllImport
             'podcast'       => podcast,
           }
 
-          FileUtils.mkdir_p("_posts")
+          FileUtils.mkdir_p("_posts/#{directory}")
 
           File.open("_posts/#{name}.html", "w") do |f|
             f.puts header.to_yaml
