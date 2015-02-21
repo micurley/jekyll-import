@@ -74,7 +74,7 @@ module JekyllImport
             'url'   => item.enclosure.url,
             'length'    => {
                 'seconds'   => item.enclosure.length,
-                'string'    => item.itunes_duration.duration,
+                'string'    => item.itunes_duration,
             },
             'type'  => item.enclosure,
             'image'     => {
